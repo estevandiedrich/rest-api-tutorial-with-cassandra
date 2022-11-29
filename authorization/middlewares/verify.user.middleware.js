@@ -1,4 +1,4 @@
-let models = require('../../common/services/cassandra-express.service');
+const models = require('../../common/services/cassandra-express.service');
 const crypto = require('crypto');
 
 exports.hasAuthValidFields = (req, res, next) => {
@@ -23,7 +23,7 @@ exports.hasAuthValidFields = (req, res, next) => {
 };
 
 exports.isPasswordAndUserMatch = (req, res, next) => {
-    models.instance.Person.find({email:req.body.email},function(error,user){
+    models.instance.Person.find({email:req.body.email},(error,user) => {
         if(error){
             res.status(501).send({error: 'Internal server error'});
         }else {

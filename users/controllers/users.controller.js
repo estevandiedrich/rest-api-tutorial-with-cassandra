@@ -1,4 +1,4 @@
-let models = require('../../common/services/cassandra-express.service');
+const models = require('../../common/services/cassandra-express.service');
 const crypto = require('crypto');
 
 
@@ -17,7 +17,7 @@ exports.insert = (req, res) => {
         permissionLevel: permissionLevel,
         created: Date.now()
     });
-    person.save(function(err){
+    person.save((err) => {
         if(err) {
             console.log(err);
             res.status(501).send({error: 'Internal server error'});
@@ -29,7 +29,7 @@ exports.insert = (req, res) => {
 };
 
 exports.list = (req, res) => {
-    models.instance.Person.find({$limit:10},function(err,list){
+    models.instance.Person.find({$limit:10},(err,list) => {
         if(err){
             console.log(err);
             res.status(501).send({error: 'Internal server error'});
@@ -41,7 +41,7 @@ exports.list = (req, res) => {
 };
 
 exports.getById = (req, res) => {
-    models.instance.Person.find({id:models.uuidFromString(req.params.userId)},function(err,list){
+    models.instance.Person.find({id:models.uuidFromString(req.params.userId)},(err,list) => {
         if(err){
             console.log(err);
             res.status(501).send({error: 'Internal server error'});
@@ -52,7 +52,7 @@ exports.getById = (req, res) => {
     });
 };
 exports.patchById = (req, res) => {
-    models.instance.Person.update({id:models.uuidFromString(req.params.userId)},req.body,function(err){
+    models.instance.Person.update({id:models.uuidFromString(req.params.userId)},req.body,(err) => {
         if(err){
             console.log(err);
             res.status(501).send({error: 'Internal server error'});
@@ -75,7 +75,7 @@ exports.patchById = (req, res) => {
 };
 
 exports.removeById = (req, res) => {
-    models.instance.Person.delete({id:models.uuidFromString(req.params.userId)},function(err){
+    models.instance.Person.delete({id:models.uuidFromString(req.params.userId)},(err) => {
         if(err){
             console.log(err);
             res.status(501).send({error: 'Internal server error'});
