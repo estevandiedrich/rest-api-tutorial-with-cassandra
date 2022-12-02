@@ -8,21 +8,21 @@ services:
     ports:
       - "3600:3600"
     depends_on:
-      - mongo
+      - cassandra
 
-  mongo:
-    image: mongo
+  cassandra:
+    image: cassandra
     volumes:
       - ./data:/data/db
     networks:
       - backend
     ports:
-      - "27017:27017"
+      - "7000:7000"
 
   web-cli:
     image: makinhs/rest-api-tutorial
     links:
-      - mongo
+      - cassandra
     networks:
       - backend
     command: sh

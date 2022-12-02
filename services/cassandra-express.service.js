@@ -2,7 +2,8 @@ var models = require('express-cassandra');
 
 //Tell express-cassandra to use the models-directory, and
 //use bind() to load the models using cassandra configurations.
-models.setDirectory( __dirname + './../../users/models').bind(
+console.log(__dirname);
+models.setDirectory( __dirname + '/../models').bind(
     {
         clientOptions: {
             contactPoints: ['127.0.0.1'],
