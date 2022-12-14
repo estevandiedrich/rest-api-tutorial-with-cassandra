@@ -1,4 +1,6 @@
-const config = require('./common/config/env.config.js');
+require('express-async-errors');
+const winston = require('winston');
+const config = require('./config/env.config.js');
 
 const express = require('express');
 const app = express();

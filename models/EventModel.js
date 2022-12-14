@@ -10,7 +10,7 @@ module.exports = {
             default: { "$db_function": "uuid()" }
         }
     },
-    key: ["sessionId", "createdAt"],
+    key: ["sessionId", "eventName", "createdAt"],
     table_name: "event",
     clustering_order: {"createdAt": "desc"}
 }
