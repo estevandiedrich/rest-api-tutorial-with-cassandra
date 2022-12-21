@@ -67,8 +67,8 @@ const post = (req, res) => {
             },
         ],
     })
-    res.status(200).send('Event saved');
-    console.log('Event saved');
+    res.status(200).send('Event added to topic');
+    console.log('Event added to topic');
 };
 
 
